@@ -48,31 +48,11 @@ class AuthController extends Controller
      *
      * @param Request $request
      * @return mixed
-     * {"data":{
-     * "access_token":"act.b28c5941b946c48f9efd63cb881b6971rbJh5kVhXIs5QqzdWKG56XqoYLxf",
-     * "captcha":"","desc_url":"","description":"","error_code":0,
-     * "expires_in":1296000,
-     * "open_id":"4982db89-baed-4f23-93fc-ff4a936bbf0b",
-     * "refresh_expires_in":2592000,
-     * "refresh_token":"rft.bf9fa5364f3c97539009e57058393dd2RF89z0O1GJgrKsylA3LbyvHCtirQ",
-     * "scope":"user_info,video.comment,video.create,video.data,video.list,video.delete,enterprise.data,enterprise.im"
-     * },"message":"success"}
      */
     public function getAccessToken(Request $request)
     {
         $code = $request->get('code');
         $access_data = ByteDance::DouYin()->OAuth()->access_token()->get($code);
-//        $access_data = [
-//            'data' => [
-//                'error_code' => 0,
-//                'access_token' => 'act.b28c5941b946c48f9efd63cb881b6971rbJh5kVhXIs5QqzdWKG56XqoYLxf',
-//                'refresh_token' => 'rft.bf9fa5364f3c97539009e57058393dd2RF89z0O1GJgrKsylA3LbyvHCtirQ',
-//                'scope' => 'user_info,video.comment,video.create,video.data,video.list,video.delete,enterprise.data,enterprise.im',
-//                'open_id' => '4982db89-baed-4f23-93fc-ff4a936bbf0b',
-//                'expires_in' => 1296000,
-//                'refresh_expires_in' => 2592000,
-//            ]
-//        ];
         if ($access_data['data']['error_code'] == 0) {
             $authUser = DouyinAuthUser::updateOrCreate(
                 [
