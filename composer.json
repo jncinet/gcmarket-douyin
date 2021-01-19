@@ -14,7 +14,8 @@
     }
   ],
   "require": {
-    "jncinet/laravel-byte-dance": "^1.0"
+    "jncinet/laravel-byte-dance": "^1.0",
+    "jncinet/laravel-env-editor": "^1.0"
   },
   "autoload": {
     "psr-4": {

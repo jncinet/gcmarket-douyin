@@ -26,7 +26,7 @@ class DouyinVideoItemController extends AdminController
     {
         $grid = new Grid(new DouyinVideoItem());
 
-        $grid->model()->orderByDesc('sort')->latest();
+        $grid->model()->latest();
 
         $grid->filter(function ($filter) {
             // 去掉默认的id过滤器
@@ -42,6 +42,7 @@ class DouyinVideoItemController extends AdminController
         $grid->column('id', __('gc-douyin::item.id'));
         $grid->column('douyin_auth_user.uri', __('gc-douyin::item.douyin_auth_user_id'));
         $grid->column('short_video.desc', __('gc-douyin::item.short_video_id'))->limit(36);
+        $grid->column('item_id', __('gc-douyin::item.item_id'));
         $grid->column('status', __('gc-douyin::item.status'))
             ->using(__('gc-douyin::item.status_value'));
         $grid->column('updated_at', __('admin.updated_at'));
@@ -62,6 +63,7 @@ class DouyinVideoItemController extends AdminController
         $show->field('id', __('gc-douyin::item.id'));
         $show->field('douyin_auth_user_id', __('gc-douyin::item.douyin_auth_user_id'));
         $show->field('short_video_id', __('gc-douyin::item.short_video_id'));
+        $show->field('item_id', __('gc-douyin::item.item_id'));
         $show->field('status', __('gc-douyin::item.status'))
             ->using(__('gc-douyin::item.status_value'));
         $show->field('created_at', __('admin.created_at'));
@@ -81,6 +83,7 @@ class DouyinVideoItemController extends AdminController
 
         $form->number('douyin_auth_user_id', __('gc-douyin::item.douyin_auth_user_id'))->required();
         $form->number('short_video', __('gc-douyin::item.short_video'))->required();
+        $form->text('item_id', __('gc-douyin::item.item_id'));
         $form->select('status', __('gc-douyin::item.status'))
             ->default(1)
             ->options(__('gc-douyin::item.status_value'));

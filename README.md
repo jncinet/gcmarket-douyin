@@ -3,6 +3,8 @@
 ### 安装
 ```shell
 $ composer require jncinet/gcmarket-douyin
+
+$ php artisan migrate
 ```
 
 ### 使用

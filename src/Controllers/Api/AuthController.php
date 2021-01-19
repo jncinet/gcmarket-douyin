@@ -24,7 +24,7 @@ class AuthController extends Controller
         $scope = 'user_info,video.create,video.delete,video.data,video.list,aweme.share,';
         $scope .= 'video.comment,enterprise.data,enterprise.im,incremental_authorization';
         // 接收CODE的地址
-        $url = route('api.douyin.get_access');
+        $url = route('api.douyin.get_access_token');
         $auth = ByteDance::DouYin()->OAuth()->authorize($scope, $url);
         // 直接转到抖音授权页
         if ($request->has('url')) {
