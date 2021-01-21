@@ -33,7 +33,7 @@ class DouyinVideoItemController extends AdminController
             $filter->disableIdFilter();
             $filter->equal('douyin_auth_user_id', __('gc-douyin::item.douyin_auth_user_id'));
             $filter->equal('short_video_id', __('gc-douyin::item.short_video_id'));
-            $filter->like('item', __('gc-douyin::item.short_video_id'));
+            $filter->equal('item_id', __('gc-douyin::item.item_id'));
             $filter->equal('status', __('gc-douyin::item.status'))
                 ->select(__('gc-douyin::item.status_value'));
             $filter->between('created_at', __('admin.created_at'))->datetime();
